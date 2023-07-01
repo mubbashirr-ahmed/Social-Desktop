@@ -70,8 +70,8 @@ namespace Social_Publisher
             using (HttpClient client = new HttpClient())
             {
 
-                string pageId = "116178198171553";
-                string accessToken = "EAAJKzgVilBABAJTJhcKilvAAZBtlKwitfzGTuaihPIDrIeg4S0d1nwgFzbYIsZCueecWsDUERfDpZBHH94YqB9Y9GeAyOVvFr3HELtrhFHMzZAYiAeRgzbKE3LiMVFA95HkbAIVfvRmFCohxz6Ak3Y7mJagK7V9GZAr93gsF7YowDHZCZCZBRtYWelUNBNYBfcg2KQDE3lYNJQqFiFsHmLs2";
+                string pageId = "";
+                string accessToken = "";
                 string message = "Posted From AWS API";
                 string timestamp = DateTime.Now.ToString();
                 byte[] imageBytes = File.ReadAllBytes(@"C:\Users\Hp\Downloads\ok.jpg"); 
@@ -95,8 +95,8 @@ namespace Social_Publisher
         }
         private async Task tw(string message)
         {
-            string pageId = "103430702795110";
-            string accessToken = "EAANPtqZCDHIoBAMZAJuhZCAePO6i0kZADDQrfJYfjhyHOiopprbRgEUdS9E40C3vGzVbWC6WZAlp7xu7tiIOZB0JeOe8gVJhMZB4dvjVlFZCu3FQABBncm9yuDyjlPeXgrN6ZAgyZC5B7dCoVVZBbEJAmpQF9jkWtELPwwhBqFOZACnthGWNFpxRAZANI";
+            string pageId = "";
+            string accessToken = "";
 
             string apiUrl = "http://127.0.0.1:5000/post_message";
 
@@ -133,7 +133,7 @@ namespace Social_Publisher
         private async Task put()
         {
             string apiUrl = "http://127.0.0.1:5000/post_image";
-            string pageAccessToken = "EAAJKzgVilBABANsykahZBWiCOZA1wnAZBb7KHWzEiTNDRF0H0YpIZBZBRlahzFZB5k0fFjr2FzZADsa3cZBvMT5kqvOSjgMYZC5P5MMx5SpHTEVhTf490hZAJzZAWwZAmECShFfnCdHZBWWqaNQjvbgo5KBDYuJTWMIXZC2gh1S3dp1tZBtYDVlZCwOR5Ng5";
+            string pageAccessToken = "";
             string imagePath1 = @"C:\Users\Hp\Downloads\chat.png";
             string imagePath2 = @"C:\Users\Hp\Downloads\internet.png";
             string timestamp1 = "2023-06-24 17:55:00";

@@ -77,7 +77,7 @@ namespace Social_Publisher.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Social Publisher;component/view/settingswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Social Publisher;V1.0.0.0;component/view/settingswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\SettingsWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
