@@ -1,0 +1,18 @@
+﻿<Window x:Class="Social_Publisher.OptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Social_Publisher"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        Title="OptionsWindow" Height="550" Width="350">
+    <Grid>
+
+        <Button x:Name="bSettings" Width="100" Content="Settings" Height="30" Margin="100,173,100,231" Click="bSettings_Click"/>
+        <Button Content="Tool"  HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="100" Margin="0,172,0,0" Click="Button_Click"/>
+        <Label Content="Welcome to Social Desktop" FontWeight="Bold" Margin="84,49,84,0" VerticalAlignment="Top"/>
+        <Label Content="Version 1.0" Margin="131,0,131,10" Height="34" VerticalAlignment="Bottom"/>
+
+    </Grid>
+</Window>

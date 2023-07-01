@@ -1,0 +1,38 @@
+D:\VSProjects\Social Publisher\bin\Debug\net6.0-windows\Social Publisher.exe
+D:\VSProjects\Social Publisher\bin\Debug\net6.0-windows\Social Publisher.dll.config
+D:\VSProjects\Social Publisher\bin\Debug\net6.0-windows\Social Publisher.deps.json
+D:\VSProjects\Social Publisher\bin\Debug\net6.0-windows\Social Publisher.runtimeconfig.json
+D:\VSProjects\Social Publisher\bin\Debug\net6.0-windows\Social Publisher.dll
+D:\VSProjects\Social Publisher\bin\Debug\net6.0-windows\Social Publisher.pdb
+D:\VSProjects\Social Publisher\bin\Debug\net6.0-windows\Facebook.dll
+D:\VSProjects\Social Publisher\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+D:\VSProjects\Social Publisher\bin\Debug\net6.0-windows\System.Data.SQLite.dll
+D:\VSProjects\Social Publisher\bin\Debug\net6.0-windows\runtimes\linux-x64\native\SQLite.Interop.dll
+D:\VSProjects\Social Publisher\bin\Debug\net6.0-windows\runtimes\osx-x64\native\SQLite.Interop.dll
+D:\VSProjects\Social Publisher\bin\Debug\net6.0-windows\runtimes\win-x64\native\SQLite.Interop.dll
+D:\VSProjects\Social Publisher\bin\Debug\net6.0-windows\runtimes\win-x86\native\SQLite.Interop.dll
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher.csproj.AssemblyReference.cache
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\LoginWindow.g.cs
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\MainWindow.g.cs
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\OptionsWindow.g.cs
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\View\PublishPost.g.cs
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\View\SettingsWindow.g.cs
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\App.g.cs
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher_MarkupCompile.cache
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher_MarkupCompile.lref
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\LoginWindow.baml
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\MainWindow.baml
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\OptionsWindow.baml
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\View\PublishPost.baml
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\View\SettingsWindow.baml
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher.g.resources
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher.GeneratedMSBuildEditorConfig.editorconfig
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher.AssemblyInfoInputs.cache
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher.AssemblyInfo.cs
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher.csproj.CoreCompileInputs.cache
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher.csproj.CopyComplete
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher.dll
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\refint\Social Publisher.dll
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher.pdb
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher.genruntimeconfig.cache
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\ref\Social Publisher.dll

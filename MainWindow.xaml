@@ -1,0 +1,53 @@
+﻿<Window x:Class="Social_Publisher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Social_Publisher"
+        mc:Ignorable="d"
+        MinHeight="500"
+        MinWidth="850"
+        Title="MainWindow" Height="500" Width="850">
+    <Grid>
+        <ListBox x:Name="imageListBox" Margin="5,44,282,5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Source="{Binding ImageSource}" Width="250" Height="250" Margin="10" Stretch="Fill"/>
+                        <TextBox Text="{Binding content}" Margin="10" Height="250" Width="300"/>
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="Add Title" HorizontalAlignment="Left" Margin="10,5,0,0" FontSize="10" />
+                            <TextBox  Margin="10,0,0,0" Height="20" Width="200"/>
+                            <Label Content="Tell Everyone what this post is about" HorizontalAlignment="Left" Margin="10,5,0,0" FontSize="10"/>
+                            <TextBox  Margin="10,0,0,0" Height="20" Width="200"/>
+                            <Label Content="Add Alt text" HorizontalAlignment="Left" Margin="10,5,0,0" FontSize="10"/>
+                            <TextBox  Margin="10,0,0,0" Height="20" Width="200"/>
+                            <Label Content="Add Destination Link" HorizontalAlignment="Left" Margin="10,5,0,0" FontSize="10"/>
+                            <TextBox  Margin="10,0,0,0" Height="20" Width="200"/>
+                            <Label Content="Add Description" HorizontalAlignment="Left" Margin="10,10,0,0" FontSize="10"/>
+                            <TextBox  Margin="10,0,0,0" Height="20" Width="200"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="Add Images" HorizontalAlignment="Right" Height="30" Width="80" VerticalAlignment="Top" Margin="0,10,10,0" Click="LoadImages_Click"/>
+        <Label Content="Start Schedule" HorizontalAlignment="Right" Margin="0,69,160,0" FontSize="12" FontWeight="Bold" VerticalAlignment="Top" Width="102"/>
+        <DatePicker HorizontalAlignment="Right" Margin="0,95,160,0" VerticalAlignment="Top" Text="Start Date"/>
+        <Label Content="End Schedule: " HorizontalAlignment="Right" Margin="0,134,170,0" FontSize="12" VerticalAlignment="Top" FontWeight="Bold"/>
+        <DatePicker HorizontalAlignment="Right" Margin="0,160,160,0" VerticalAlignment="Top" Text="Start Date"/>
+        <Label Content="Post Order " HorizontalAlignment="Right" Margin="0,217,188,0" FontSize="12" VerticalAlignment="Top" FontWeight="Bold"/>
+        <StackPanel Margin="0,243,78,141" HorizontalAlignment="Right" Width="183">
+            <RadioButton Content="Process in Order" Margin="10, 5, 0, 0"/>
+            <RadioButton Content="Process Randomly" Margin="10, 5, 0, 0"/>
+        </StackPanel>
+        <StackPanel Margin="0,324,-46,0" Height="67" VerticalAlignment="Top" HorizontalAlignment="Right" Width="307">
+            <RadioButton Content="Process at a specific time" Margin="10, 5, 0, 0"/>
+            <RadioButton Content="Process at a Random time between UTC" Margin="10, 5, 0, 0"/>
+            <RadioButton Content="Process at a Random time" Margin="10, 5, 0, 0"/>
+        </StackPanel>
+        <Label Content="Time Ordering" HorizontalAlignment="Right" Margin="0,298,169,0" FontSize="12" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Social Media Publisher" FontSize="12" FontWeight="Bold"  HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Width="160"/>
+        <Button Content="Publish Images" HorizontalAlignment="Right" Height="30" Width="90" VerticalAlignment="Top" Margin="0,10,95,0" x:Name="bHit" Click="bPublish_Click"/>
+    </Grid>
+</Window>
