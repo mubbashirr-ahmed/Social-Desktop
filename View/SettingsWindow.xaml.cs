@@ -90,7 +90,7 @@ namespace Social_Publisher.View
             Properties.Settings.Default.Reset();
         }
 
-        private async Task bAWSVerify_ClickAsync(object sender, RoutedEventArgs e)
+        private void bAWSVerify_Click(object sender, RoutedEventArgs e)
         {
             string awsendpoint = endpoint.Text.ToString().Trim();
             if (string.IsNullOrEmpty(awsendpoint))
@@ -98,7 +98,7 @@ namespace Social_Publisher.View
                 MessageBox.Show("URL is required");
                 return;
             }
-            await verifyAWSendPoint(awsendpoint);
+            verifyAWSendPoint(awsendpoint);
             
         }
 
