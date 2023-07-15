@@ -90,7 +90,7 @@ namespace Social_Publisher.View
             Properties.Settings.Default.Reset();
         }
 
-        private void bAWSVerify_Click(object sender, RoutedEventArgs e)
+        private async Task bAWSVerify_ClickAsync(object sender, RoutedEventArgs e)
         {
             string awsendpoint = endpoint.Text.ToString().Trim();
             if (string.IsNullOrEmpty(awsendpoint))
@@ -98,7 +98,29 @@ namespace Social_Publisher.View
                 MessageBox.Show("URL is required");
                 return;
             }
-            verifyAWSendPoint(awsendpoint);
+            await verifyAWSendPoint(awsendpoint);
+            
+        }
+
+        private async Task createTable(string awsendpoint)
+        {
+            string url = $"{awsendpoint}create_table";
+
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseData = await response.Content.ReadAsStringAsync();
+                    if (responseData.Contains("created "))
+                    {
+                        return;
+                    }
+                    //MessageBox.Show("Invalid Credentials");
+                    return;
+                }
+            }
         }
 
         private async Task verifyAWSendPoint(string awsendpoint)
@@ -117,6 +139,7 @@ namespace Social_Publisher.View
 
                         Properties.Settings.Default.awsURL = awsendpoint;
                         Properties.Settings.Default.Save();
+                        await createTable(awsendpoint);
                         MessageBox.Show("URL Verified!");
                         return;
                     }

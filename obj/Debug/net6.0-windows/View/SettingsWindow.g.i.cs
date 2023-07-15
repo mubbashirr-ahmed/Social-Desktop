@@ -131,7 +131,7 @@ namespace Social_Publisher.View {
             case 6:
             
             #line 30 "..\..\..\..\View\SettingsWindow.xaml"
-            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.bAWSVerify_Click);
+            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.bAWSVerify_ClickAsync);
             
             #line default
             #line hidden
