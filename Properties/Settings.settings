@@ -8,7 +8,7 @@
     <Setting Name="pageID" Type="System.String" Scope="User">
       <Value Profile="(Default)">empty</Value>
     </Setting>
-    <Setting Name="appID" Type="System.String" Scope="User">
+    <Setting Name="awsURL" Type="System.String" Scope="User">
       <Value Profile="(Default)">empty</Value>
     </Setting>
   </Settings>

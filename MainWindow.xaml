@@ -7,26 +7,54 @@
         mc:Ignorable="d"
         MinHeight="500"
         MinWidth="850"
-        Title="MainWindow" Height="500" Width="850">
+        Title="MainWindow" Height="600" Width="850">
     <Grid>
-        <ListBox x:Name="imageListBox" Margin="5,44,282,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="500*"/>
+            <RowDefinition Height="95"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <ListBox x:Name="imageListBox" Margin="5,44,282,5">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal" >
-                        <Image Source="{Binding ImageSource}" Width="250" Height="250" Margin="10" Stretch="Fill"/>
-                        <TextBox Text="{Binding content}" Margin="10" Height="250" Width="300"/>
-                        <StackPanel Orientation="Vertical">
-                            <Label Content="Add Title" HorizontalAlignment="Left" Margin="10,5,0,0" FontSize="10" />
-                            <TextBox  Margin="10,0,0,0" Height="20" Width="200"/>
-                            <Label Content="Tell Everyone what this post is about" HorizontalAlignment="Left" Margin="10,5,0,0" FontSize="10"/>
-                            <TextBox  Margin="10,0,0,0" Height="20" Width="200"/>
-                            <Label Content="Add Alt text" HorizontalAlignment="Left" Margin="10,5,0,0" FontSize="10"/>
-                            <TextBox  Margin="10,0,0,0" Height="20" Width="200"/>
-                            <Label Content="Add Destination Link" HorizontalAlignment="Left" Margin="10,5,0,0" FontSize="10"/>
-                            <TextBox  Margin="10,0,0,0" Height="20" Width="200"/>
-                            <Label Content="Add Description" HorizontalAlignment="Left" Margin="10,10,0,0" FontSize="10"/>
-                            <TextBox  Margin="10,0,0,0" Height="20" Width="200"/>
-                        </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Border BorderBrush="Black" BorderThickness="2">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Assets/facebook.png" Width="24" Height="24" Margin="10"/>
+                                <Image Source="{Binding ImageSource}" Width="250" Height="250" Margin="10" Stretch="Fill"/>
+                                <TextBox Text="{Binding content}" Margin="10" Height="250" Width="300"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border BorderBrush="Black" BorderThickness="2" Margin="5, 0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Assets/twitter.png" Width="24" Height="24" Margin="10"/>
+                                <Image Source="{Binding ImageSource}" Width="250" Height="250" Margin="10" Stretch="Fill"/>
+                                <TextBox Text="To be added later" Margin="10" Height="250" Width="300"/>
+                            </StackPanel>
+                        </Border>
+
+                        <Border BorderBrush="Black" BorderThickness="2" Margin="5, 0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Assets/pinterest.png" Width="24" Height="24" Margin="10"/>
+                                <Image Source="{Binding ImageSource}" Width="200" Height="250" Margin="10" Stretch="Fill"/>
+                                <StackPanel Orientation="Vertical">
+                                    <Label Content="Add Title" HorizontalAlignment="Left" Margin="10,5,0,0" FontSize="10" />
+                                    <TextBox  Margin="10,0,10,0" Height="20" Width="200"/>
+                                    <Label Content="Tell Everyone what this post is about" HorizontalAlignment="Left" Margin="10,5,0,0" FontSize="10"/>
+                                    <TextBox  Margin="10,0,10,0" Height="20" Width="200"/>
+                                    <Label Content="Add Alt text" HorizontalAlignment="Left" Margin="10,5,0,0" FontSize="10"/>
+                                    <TextBox  Margin="10,0,10,0" Height="20" Width="200"/>
+                                    <Label Content="Add Destination Link" HorizontalAlignment="Left" Margin="10,5,0,0" FontSize="10"/>
+                                    <TextBox  Margin="10,0,10,0" Height="20" Width="200"/>
+                                    <Label Content="Add Description" HorizontalAlignment="Left" Margin="10,10,0,0" FontSize="10"/>
+                                    <TextBox  Margin="10,0,10,0" Height="20" Width="200"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        
+
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -49,5 +77,6 @@
         <Label Content="Time Ordering" HorizontalAlignment="Right" Margin="0,298,169,0" FontSize="12" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Social Media Publisher" FontSize="12" FontWeight="Bold"  HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Width="160"/>
         <Button Content="Publish Images" HorizontalAlignment="Right" Height="30" Width="90" VerticalAlignment="Top" Margin="0,10,95,0" x:Name="bHit" Click="bPublish_Click"/>
+        </Grid>
     </Grid>
 </Window>

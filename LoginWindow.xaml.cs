@@ -59,8 +59,7 @@ namespace Social_Publisher
 
                         if (apiResponse.purchase.email == email.Trim())
                         {
-                            MessageBox.Show("Login Successful!");
-                            MainWindow mainWindow = new MainWindow();
+                            OptionsWindow mainWindow = new OptionsWindow();
                             this.Close();
                             mainWindow.Show();
                             return;

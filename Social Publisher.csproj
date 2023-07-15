@@ -9,7 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\deleteall.png" />
+    <None Remove="Assets\facebook.png" />
+    <None Remove="Assets\home.jpg" />
+    <None Remove="Assets\one.png" />
+    <None Remove="Assets\pinterest.png" />
     <None Remove="Assets\sdlogo.png" />
+    <None Remove="Assets\settings.jpg" />
+    <None Remove="Assets\sync_in_progress.jpg" />
+    <None Remove="Assets\timeline.jpg" />
+    <None Remove="Assets\twitter.png" />
+    <None Remove="Assets\two.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,9 +30,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\deleteall.png" />
+    <Resource Include="Assets\facebook.png" />
+    <Resource Include="Assets\home.jpg" />
+    <Resource Include="Assets\one.png" />
+    <Resource Include="Assets\pinterest.png" />
     <Resource Include="Assets\sdlogo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\settings.jpg" />
+    <Resource Include="Assets\sync_in_progress.jpg" />
+    <Resource Include="Assets\timeline.jpg" />
+    <Resource Include="Assets\twitter.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\two.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -30,31 +30,32 @@ namespace Social_Publisher.View
         {
             string pageID = Properties.Settings.Default.pageID;
             string access = Properties.Settings.Default.access_token;
-            string aID = Properties.Settings.Default.appID;
+            string endpoints = Properties.Settings.Default.awsURL;
 
             if (access != "empty" || pageID != "empty")
             {
                 access_token.Text = access;
                 tPageID.Text = pageID;
-                tAppID.Text = aID;
-                return;
+            }
+            if (endpoints != "empty")
+            {
+                endpoint.Text = endpoints;
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string accessKey = access_token.Text.ToString();
-            string appID = tAppID.Text.ToString();
             string pageID = tPageID.Text.ToString();
-            if(String.IsNullOrEmpty(accessKey) || String.IsNullOrEmpty(appID) || String.IsNullOrEmpty(pageID) )
+            if(String.IsNullOrEmpty(accessKey) || String.IsNullOrEmpty(pageID) )
             {
                 MessageBox.Show("Fill All Details");
                 return;
             }
-            callApi(appID, pageID, accessKey);
+            callApi(pageID, accessKey);
         }
 
-        private async Task callApi(string appID, string pageID, string access_token)
+        private async Task callApi(string pageID, string access_token)
         {
             string url = $"https://graph.facebook.com/{pageID}?access_token={access_token}";
 
@@ -67,12 +68,11 @@ namespace Social_Publisher.View
                     string responseData = await response.Content.ReadAsStringAsync();
                     if (responseData.Contains(pageID))
                     {
-                        MessageBox.Show("Account Verified!");
+                        
                         Properties.Settings.Default.access_token = access_token;
                         Properties.Settings.Default.pageID = pageID;
-                        Properties.Settings.Default.appID = appID;
                         Properties.Settings.Default.Save();
-
+                        MessageBox.Show("Account Verified!");
                         return;
                     }
                     MessageBox.Show("Invalid Credentials");
@@ -88,6 +88,54 @@ namespace Social_Publisher.View
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Reset();
+        }
+
+        private void bAWSVerify_Click(object sender, RoutedEventArgs e)
+        {
+            string awsendpoint = endpoint.Text.ToString().Trim();
+            if (string.IsNullOrEmpty(awsendpoint))
+            {
+                MessageBox.Show("URL is required");
+                return;
+            }
+            verifyAWSendPoint(awsendpoint);
+        }
+
+        private async Task verifyAWSendPoint(string awsendpoint)
+        {
+            string url = $"{awsendpoint}verify";
+
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseData = await response.Content.ReadAsStringAsync();
+                    if (responseData.Contains("Working"))
+                    {
+
+                        Properties.Settings.Default.awsURL = awsendpoint;
+                        Properties.Settings.Default.Save();
+                        MessageBox.Show("URL Verified!");
+                        return;
+                    }
+                    MessageBox.Show("Invalid Credentials");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Request failed with status code: " + response.StatusCode);
+                }
+            }
+        }
+
+        private void bLogout_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.Reset();
+            access_token.Text = "";
+            tPageID.Text = "";
+            endpoint.Text = "";
         }
     }
 }

@@ -6,13 +6,15 @@
         xmlns:local="clr-namespace:Social_Publisher"
         ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="OptionsWindow" Height="550" Width="350">
+        Title="OptionsWindow" Height="550" Width="750">
     <Grid>
 
-        <Button x:Name="bSettings" Width="100" Content="Settings" Height="30" Margin="100,173,100,231" Click="bSettings_Click"/>
-        <Button Content="Tool"  HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="100" Margin="0,172,0,0" Click="Button_Click"/>
-        <Label Content="Welcome to Social Desktop" FontWeight="Bold" Margin="84,49,84,0" VerticalAlignment="Top"/>
-        <Label Content="Version 1.0" Margin="131,0,131,10" Height="34" VerticalAlignment="Bottom"/>
+        <Button x:Name="bSettings" Content="Image Schedule Creation" Height="30" Margin="260,223,260,0" Width="180" Click="bSettings_Click" VerticalAlignment="Top"/>
+        <Button Content="Manual Schedule Creation"  HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="180" Margin="0,172,0,0"/>
+        <Image HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="24" Source="Assets/home.jpg"/>
+        <Image Margin="0,0,10,10" Source="Assets/timeline.jpg" Height="24" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24" />
+        <Image Height="24" Margin="0,10,10,0" VerticalAlignment="Top" Source="Assets/sync_in_progress.jpg" HorizontalAlignment="Right" Width="24"/>
+        <Image HorizontalAlignment="Left" Height="24" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="24" Source="Assets/settings.jpg" MouseUp="Image_MouseUp" />
 
     </Grid>
 </Window>

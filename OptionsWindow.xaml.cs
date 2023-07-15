@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,15 +28,40 @@ namespace Social_Publisher
 
         private void bSettings_Click(object sender, RoutedEventArgs e)
         {
-            SettingsWindow settings = new SettingsWindow();
-            settings.Show();
+            if (isCredsAvailable())
+            {
+                PlannerWindow main = new PlannerWindow();
+                this.Close();
+                main.Show();
+            }
+            
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private bool isCredsAvailable()
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
+            string pageID = Properties.Settings.Default.pageID;
+            string access = Properties.Settings.Default.access_token;
+            string endpoints = Properties.Settings.Default.awsURL;
+
+            if (access == "empty" || pageID == "empty")
+            {
+                MessageBox.Show("First go to settings and add credentials!");
+                return false;
+            }
+            if (endpoints == "empty")
+            {
+                MessageBox.Show("First go to settings and verify AWS credentials!");
+                return false;
+            }
+            return true;
+           
+        }
+
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            SettingsWindow settingsWindow = new SettingsWindow();
+            settingsWindow.Show();
+
         }
     }
 }

@@ -36,3 +36,9 @@ D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\refint\Social Publisher.
 D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher.pdb
 D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\Social Publisher.genruntimeconfig.cache
 D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\ref\Social Publisher.dll
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\View\Tabs\SchedulerPage.g.cs
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\View\Tabs\SelectImagesPage.g.cs
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\View\Tabs\SchedulerPage.baml
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\View\Tabs\SelectImagesPage.baml
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\PlannerWindow.g.cs
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\PlannerWindow.baml

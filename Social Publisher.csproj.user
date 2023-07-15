@@ -13,10 +13,19 @@
     <Compile Update="LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="PlannerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\PublishPost.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\SettingsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Tabs\SchedulerPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Tabs\SelectImagesPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -30,10 +39,19 @@
     <Page Update="LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="PlannerWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\PublishPost.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Tabs\SchedulerPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Tabs\SelectImagesPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -50,12 +50,12 @@ namespace Social_Publisher.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("empty")]
-        public string appID {
+        public string awsURL {
             get {
-                return ((string)(this["appID"]));
+                return ((string)(this["awsURL"]));
             }
             set {
-                this["appID"] = value;
+                this["awsURL"] = value;
             }
         }
     }
