@@ -43,19 +43,27 @@ namespace Social_Publisher.View
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void fbSave_Click(object sender, RoutedEventArgs e)
         {
             string accessKey = access_token.Text.ToString();
             string pageID = tPageID.Text.ToString();
-            if(String.IsNullOrEmpty(accessKey) || String.IsNullOrEmpty(pageID) )
+            if(string.IsNullOrEmpty(accessKey) || string.IsNullOrEmpty(pageID) )
             {
                 MessageBox.Show("Fill All Details");
                 return;
             }
-            callApi(pageID, accessKey);
+            string apiURl = Properties.Settings.Default.awsURL;
+            if (apiURl == "empty")
+            {
+                MessageBox.Show("AWS endpoint not provided!");
+                return;
+            }
+            fbSave.IsEnabled = false;
+            await callApi(apiURl, pageID, accessKey);
+            fbSave.IsEnabled = true;
         }
 
-        private async Task callApi(string pageID, string access_token)
+        private async Task callApi(string endPoint, string pageID, string access_token)
         {
             string url = $"https://graph.facebook.com/{pageID}?access_token={access_token}";
 
@@ -68,7 +76,7 @@ namespace Social_Publisher.View
                     string responseData = await response.Content.ReadAsStringAsync();
                     if (responseData.Contains(pageID))
                     {
-                        
+                        bool isCreated = await createCredTable(endPoint, access_token, pageID);
                         Properties.Settings.Default.access_token = access_token;
                         Properties.Settings.Default.pageID = pageID;
                         Properties.Settings.Default.Save();
@@ -84,11 +92,31 @@ namespace Social_Publisher.View
                 }
             }
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async Task<bool> createCredTable(string awsendpoint, string access_token, string pageID)
         {
-            Properties.Settings.Default.Reset();
+            string url = $"{awsendpoint}store_credentials";
+            using (HttpClient client = new HttpClient())
+            {
+                MultipartFormDataContent formContent = new MultipartFormDataContent();
+                formContent.Add(new StringContent(access_token), "access_token");
+                formContent.Add(new StringContent(pageID), "page_id");
+
+                HttpResponseMessage response = await client.PostAsync(url, formContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseData = await response.Content.ReadAsStringAsync();
+                    if (responseData.Contains("created"))
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                return false;
+            }
         }
+
+
+
 
         private void bAWSVerify_Click(object sender, RoutedEventArgs e)
         {
@@ -101,8 +129,7 @@ namespace Social_Publisher.View
             verifyAWSendPoint(awsendpoint);
             
         }
-
-        private async Task createTable(string awsendpoint)
+        private async Task<bool> createTable(string awsendpoint)
         {
             string url = $"{awsendpoint}create_table";
 
@@ -115,14 +142,14 @@ namespace Social_Publisher.View
                     string responseData = await response.Content.ReadAsStringAsync();
                     if (responseData.Contains("created "))
                     {
-                        return;
+                        return true;
                     }
-                    //MessageBox.Show("Invalid Credentials");
-                    return;
+                    
+                    return false;
                 }
             }
+            return false;
         }
-
         private async Task verifyAWSendPoint(string awsendpoint)
         {
             string url = $"{awsendpoint}verify";
@@ -136,12 +163,15 @@ namespace Social_Publisher.View
                     string responseData = await response.Content.ReadAsStringAsync();
                     if (responseData.Contains("Working"))
                     {
-
-                        Properties.Settings.Default.awsURL = awsendpoint;
-                        Properties.Settings.Default.Save();
-                        await createTable(awsendpoint);
-                        MessageBox.Show("URL Verified!");
-                        return;
+                        bool res = await createTable(awsendpoint);
+                        if (res)
+                        {
+                            Properties.Settings.Default.awsURL = awsendpoint;
+                            Properties.Settings.Default.Save();
+                            MessageBox.Show("URL Verified!");
+                            return;
+                        }
+                        MessageBox.Show("Database Doesnot exist!");
                     }
                     MessageBox.Show("Invalid Credentials");
                     return;
@@ -152,7 +182,6 @@ namespace Social_Publisher.View
                 }
             }
         }
-
         private void bLogout_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.Reset();

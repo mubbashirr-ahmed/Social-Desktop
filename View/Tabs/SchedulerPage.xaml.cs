@@ -32,7 +32,7 @@ namespace Social_Publisher.View.Tabs
             unixTimestamps = new List<long>();
         }
       
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             DateTime startDate = startDatePicker.SelectedDate.GetValueOrDefault();
             DateTime endDate = endDatePicker.SelectedDate.GetValueOrDefault();
@@ -75,7 +75,7 @@ namespace Social_Publisher.View.Tabs
             progress.Visibility = Visibility.Visible;
             for (int i = 0; i < allPosts.Count; i++)
             {
-                await postToAWS(allPosts[i].ImageSource, allPosts[i].ImageSource, allUnixTimestamps[i], access, pageID, endpoint);
+                await postToAWS(allPosts[i].ImageSource, allPosts[i].ImageSource, 1469212800, access, pageID, endpoint);
                 progress.Content = $"Published {i + 1} out of {allImages.Count} posts";
             }
             MessageBox.Show("Your Posts have been Scheduled");
@@ -97,6 +97,7 @@ namespace Social_Publisher.View.Tabs
 
                 HttpResponseMessage response = await client.PostAsync($"{apiUrl}/upload", formContent);
                 string responseBody = await response.Content.ReadAsStringAsync();
+                MessageBox.Show(responseBody);
             }
 
         }

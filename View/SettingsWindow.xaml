@@ -17,9 +17,8 @@
                 <TextBox x:Name="tPageID" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="10,10,0,0" Width="210" Height="25"/>
                 <Label Content="Access Token" FontSize="12" HorizontalAlignment="Left" Margin="10,10,0,0"/>
                 <TextBox x:Name="access_token" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Width="210" Height="25"/>
-                <Button Content="Verify and Save" HorizontalAlignment="Left" Margin="20,10,0,0" Height="32" Width="117" Click="Button_Click"/>
-                <Button Content="Reset and Logout" HorizontalAlignment="Left" Margin="11,322,0,0" VerticalAlignment="Top"  Height="32" Width="117" Click="Button_Click_1"/>
-
+                <Button x:Name="fbSave" Content="Verify and Save" HorizontalAlignment="Left" Margin="20,10,0,0" Height="32" Width="117" Click="fbSave_Click"/>
+               
             </StackPanel>
         </Border>
 
