@@ -39,7 +39,7 @@ namespace Social_Publisher
             {
                 return;
             }
-            mainFrame.Content = new SchedulerPage(selectImagesPage.postsData());
+            mainFrame.Content = new SchedulerPage(selectImagesPage.postsData(), this);
         }
     }
 }

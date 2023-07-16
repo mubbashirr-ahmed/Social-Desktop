@@ -31,7 +31,6 @@ namespace Social_Publisher
             if (isCredsAvailable())
             {
                 PlannerWindow main = new PlannerWindow();
-                this.Close();
                 main.Show();
             }
             

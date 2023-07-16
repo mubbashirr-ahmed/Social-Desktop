@@ -11,5 +11,8 @@
     <Setting Name="awsURL" Type="System.String" Scope="User">
       <Value Profile="(Default)">empty</Value>
     </Setting>
+    <Setting Name="loggedin" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

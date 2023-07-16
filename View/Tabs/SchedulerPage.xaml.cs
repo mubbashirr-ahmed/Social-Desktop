@@ -25,11 +25,13 @@ namespace Social_Publisher.View.Tabs
     {
         List<ImageItem> allImages;
         private List<long> unixTimestamps;
-        public SchedulerPage(List<ImageItem> allImages)
+        PlannerWindow planner;
+        public SchedulerPage(List<ImageItem> allImages, PlannerWindow planner)
         {
             InitializeComponent();
             this.allImages = allImages;
             unixTimestamps = new List<long>();
+            this.planner = planner;
         }
       
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -73,12 +75,20 @@ namespace Social_Publisher.View.Tabs
             string endpoint = Properties.Settings.Default.awsURL;
             lMessage.Visibility = Visibility.Visible;
             progress.Visibility = Visibility.Visible;
+            
             for (int i = 0; i < allPosts.Count; i++)
             {
-                await postToAWS(allPosts[i].ImageSource, allPosts[i].ImageSource, 1469212800, access, pageID, endpoint);
+                string content = allPosts[i].content;
+                if (string.IsNullOrEmpty(content))
+                {
+                    content = "";
+                }
+                await postToAWS(allPosts[i].ImageSource, content, allUnixTimestamps[i], access, pageID, endpoint);
                 progress.Content = $"Published {i + 1} out of {allImages.Count} posts";
             }
             MessageBox.Show("Your Posts have been Scheduled");
+            planner.Close();
+            
         }
         private async Task postToAWS(string path, string message, long timestamp, string accessToken, string pageId, string apiUrl)
         {   

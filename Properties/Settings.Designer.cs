@@ -58,5 +58,17 @@ namespace Social_Publisher.Properties {
                 this["awsURL"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool loggedin {
+            get {
+                return ((bool)(this["loggedin"]));
+            }
+            set {
+                this["loggedin"] = value;
+            }
+        }
     }
 }
