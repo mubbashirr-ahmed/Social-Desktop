@@ -107,7 +107,7 @@ namespace Social_Publisher.View.Tabs
 
                 HttpResponseMessage response = await client.PostAsync($"{apiUrl}/upload", formContent);
                 string responseBody = await response.Content.ReadAsStringAsync();
-                MessageBox.Show(responseBody);
+                //MessageBox.Show(responseBody);
             }
 
         }
