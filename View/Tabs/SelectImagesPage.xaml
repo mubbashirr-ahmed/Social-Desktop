@@ -23,7 +23,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="/Assets/facebook.png" Width="24" Height="24" Margin="10"/>
                                     <Image Source="{Binding ImageSource}" Width="250" Height="250" Margin="10" Stretch="Fill"/>
-                                    <TextBox Text="{Binding content}" Margin="10" Height="250" Width="300"/>
+                                    <TextBox Text="{Binding fbContent}" Margin="10" Height="250" Width="300"/>
                                 </StackPanel>
                             </Border>
 
@@ -31,7 +31,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="/Assets/twitter.png" Width="24" Height="24" Margin="10"/>
                                     <Image Source="{Binding ImageSource}" Width="250" Height="250" Margin="10" Stretch="Fill"/>
-                                    <TextBox Text="To be added later" Margin="10" Height="250" Width="300"/>
+                                    <TextBox Text="{Binding twContent}" Margin="10" Height="250" Width="300"/>
                                 </StackPanel>
                             </Border>
 

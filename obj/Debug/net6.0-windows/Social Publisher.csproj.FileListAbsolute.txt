@@ -42,3 +42,5 @@ D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\View\Tabs\SchedulerPage.
 D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\View\Tabs\SelectImagesPage.baml
 D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\PlannerWindow.g.cs
 D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\PlannerWindow.baml
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\SplashWindow.g.cs
+D:\VSProjects\Social Publisher\obj\Debug\net6.0-windows\SplashWindow.baml

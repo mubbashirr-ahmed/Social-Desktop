@@ -61,13 +61,85 @@ namespace Social_Publisher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool loggedin {
+        [global::System.Configuration.DefaultSettingValueAttribute("empty")]
+        public string loggedin {
             get {
-                return ((bool)(this["loggedin"]));
+                return ((string)(this["loggedin"]));
             }
             set {
                 this["loggedin"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("empty")]
+        public string tCred {
+            get {
+                return ((string)(this["tCred"]));
+            }
+            set {
+                this["tCred"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("empty")]
+        public string tApi {
+            get {
+                return ((string)(this["tApi"]));
+            }
+            set {
+                this["tApi"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("empty")]
+        public string tAS {
+            get {
+                return ((string)(this["tAS"]));
+            }
+            set {
+                this["tAS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("empty")]
+        public string tCK {
+            get {
+                return ((string)(this["tCK"]));
+            }
+            set {
+                this["tCK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("empty")]
+        public string tCKS {
+            get {
+                return ((string)(this["tCKS"]));
+            }
+            set {
+                this["tCKS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("empty")]
+        public string tUser {
+            get {
+                return ((string)(this["tUser"]));
+            }
+            set {
+                this["tUser"] = value;
             }
         }
     }

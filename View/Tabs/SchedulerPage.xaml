@@ -34,9 +34,18 @@
                 </StackPanel>
             </StackPanel>
         </Border>
-        <Button Content="Publish" Margin="0,0,30,30" HorizontalAlignment="Right" Width="89" Height="32" VerticalAlignment="Bottom" Grid.Row="1" Click="Button_Click"/>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Margin="540, 50, 0, 0">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Post Destination" Margin="10, 10, 20, 10" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" VerticalAlignment="Top"/>
+                <CheckBox Content="Facebook" Margin="20, 0,0,0" x:Name="cFacebook"/>
+                <CheckBox Content="Twitter" Margin="20, 10,0,0" x:Name="cTwitter"/>
+
+            </StackPanel>
+        </Border>
+        <Button x:Name="bPublish" Content="Publish" Margin="0,0,30,30" HorizontalAlignment="Right" Width="89" Height="32" VerticalAlignment="Bottom" Grid.Row="1" Click="Button_Click"/>
         <Label x:Name="lMessage" FontWeight="Bold" Content="Do not close this window un less all posts are published" Margin="232,310,196,114" />
-        <Label x:Name="progress" Content="Posting 0 out of 0" Margin="334,341,334,83" />
+        <Label x:Name="progressFB" Content="Posting 0 out of 0" Margin="293,346,257,78" Visibility="Hidden" />
+        <Label x:Name="progressTW" Content="Posting 0 out of 0" Margin="293,377,257,46" Visibility="Hidden" />
 
     </Grid>
 </Page>

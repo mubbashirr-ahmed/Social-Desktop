@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Social_Publisher.View
 {
@@ -20,9 +12,11 @@ namespace Social_Publisher.View
     /// </summary>
     public partial class SettingsWindow : Window
     {
-        public SettingsWindow()
+        OptionsWindow optionsWindow;
+        public SettingsWindow(OptionsWindow optionsWindow)
         {
             InitializeComponent();
+            this.optionsWindow = optionsWindow;
             checkPrefs();
         }
 
@@ -31,7 +25,7 @@ namespace Social_Publisher.View
             string pageID = Properties.Settings.Default.pageID;
             string access = Properties.Settings.Default.access_token;
             string endpoints = Properties.Settings.Default.awsURL;
-
+            string twVerify = Properties.Settings.Default.tCred;
             if (access != "empty" || pageID != "empty")
             {
                 access_token.Text = access;
@@ -41,6 +35,15 @@ namespace Social_Publisher.View
             {
                 endpoint.Text = endpoints;
             }
+            if(twVerify != "empty")
+            { 
+                tapiKey.Text = Properties.Settings.Default.tApi;
+                tapiKeySecret.Text = Properties.Settings.Default.tAS;
+                taccessTokenTwitter.Text =  Properties.Settings.Default.tCK;
+                taccessTokenSecretTwitter.Text = Properties.Settings.Default.tCKS;
+                tuserName.Text = Properties.Settings.Default.tUser;
+            }
+
         }
 
         private async void fbSave_Click(object sender, RoutedEventArgs e)
@@ -188,6 +191,97 @@ namespace Social_Publisher.View
             access_token.Text = "";
             tPageID.Text = "";
             endpoint.Text = "";
+            LoginWindow loginWindow = new LoginWindow();
+            this.Close();
+            loginWindow.Show();
+            
+        }
+
+        private void bTWSave_Click(object sender, RoutedEventArgs e)
+        {
+            string apikey = tapiKey.Text.Trim();
+            string apisecret = tapiKeySecret.Text.Trim();
+            string consumerkey = taccessTokenTwitter.Text.Trim();
+            string consumersecret = taccessTokenSecretTwitter.Text.Trim();
+            string username = tuserName.Text.Trim();
+            if (string.IsNullOrEmpty(apikey) ||
+                string.IsNullOrEmpty(apisecret) ||
+                string.IsNullOrEmpty(consumerkey) ||
+                string.IsNullOrEmpty(consumersecret) ||
+                string.IsNullOrEmpty(username))
+            {
+                MessageBox.Show("All fields are required");
+                return;
+            }
+
+            string apiURl = Properties.Settings.Default.awsURL;
+            if (apiURl == "empty")
+            {
+                MessageBox.Show("AWS endpoint not provided!");
+                return;
+            }
+
+            bTWSave.IsEnabled = false; 
+            verifyTwitter(apikey, apisecret, consumerkey, consumersecret, username, apiURl);
+                   
+        }
+
+        private async Task createTwitterTable(string apikey, string apisecret, string consumerkey, string consumersecret, string username, string apiURl)
+        {
+            string url = $"{apiURl}store_tw_credentials";
+            using (HttpClient client = new HttpClient())
+            {
+                MultipartFormDataContent formContent = new MultipartFormDataContent();
+                formContent.Add(new StringContent(apikey), "consumer_key");
+                formContent.Add(new StringContent(apisecret), "consumer_secret");
+                formContent.Add(new StringContent(consumerkey), "access_token");
+                formContent.Add(new StringContent(consumersecret), "access_token_secret");
+
+                HttpResponseMessage response = await client.PostAsync(url, formContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    return;
+                }
+            }
+        }
+
+        private async Task verifyTwitter(string apikey, string apisecret, string consumerkey, string consumersecret, string username, string apiURL)
+        {
+            string url = $"{apiURL}verify_twitter";
+            using (HttpClient client = new HttpClient())
+            {
+                MultipartFormDataContent formContent = new MultipartFormDataContent();
+                formContent.Add(new StringContent(apikey), "apikey");
+                formContent.Add(new StringContent(apisecret), "apikeysecret");
+                formContent.Add(new StringContent(consumerkey), "consumerkey");
+                formContent.Add(new StringContent(consumersecret), "consumerkeysecret");
+                formContent.Add(new StringContent(username), "username");
+
+                HttpResponseMessage response = await client.PostAsync(url, formContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    await createTwitterTable(apikey, apisecret, consumerkey, consumersecret, username, apiURL);
+                    MessageBox.Show("Data Verified and saved!");
+                    saveCreds(apikey, apisecret, consumerkey, consumersecret, username, apiURL);
+
+                    bTWSave.IsEnabled = true;
+                    return;
+                }
+                MessageBox.Show("Error: " + response);
+                bTWSave.IsEnabled = true;
+                return;
+            }
+        }
+
+        private void saveCreds(string apikey, string apisecret, string consumerkey, string consumersecret, string username, string apiURL)
+        {
+            Properties.Settings.Default.tCred = "available";
+            Properties.Settings.Default.tApi = apikey;
+            Properties.Settings.Default.tAS = apisecret;
+            Properties.Settings.Default.tCK = consumerkey;
+            Properties.Settings.Default.tCKS = consumersecret;
+            Properties.Settings.Default.tUser = username;
+            Properties.Settings.Default.Save();
         }
     }
 }

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\VSProjects\Social Publisher\App.xaml
-82135492037
+9851707769
 
-14-1259752665
+15-135545428
 1971691141969
-LoginWindow.xaml;MainWindow.xaml;OptionsWindow.xaml;PlannerWindow.xaml;View\PublishPost.xaml;View\SettingsWindow.xaml;View\Tabs\SchedulerPage.xaml;View\Tabs\SelectImagesPage.xaml;
+LoginWindow.xaml;MainWindow.xaml;OptionsWindow.xaml;PlannerWindow.xaml;SplashWindow.xaml;View\PublishPost.xaml;View\SettingsWindow.xaml;View\Tabs\SchedulerPage.xaml;View\Tabs\SelectImagesPage.xaml;
 
 False
 

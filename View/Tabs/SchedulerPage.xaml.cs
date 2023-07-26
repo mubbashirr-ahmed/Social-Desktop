@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net;
 
 namespace Social_Publisher.View.Tabs
 {
@@ -29,11 +30,26 @@ namespace Social_Publisher.View.Tabs
         public SchedulerPage(List<ImageItem> allImages, PlannerWindow planner)
         {
             InitializeComponent();
+            checkPrefs();
             this.allImages = allImages;
             unixTimestamps = new List<long>();
             this.planner = planner;
         }
-      
+
+        private void checkPrefs()
+        {
+            string fbCred = Properties.Settings.Default.access_token;
+            string twCred = Properties.Settings.Default.tCred;
+            if(fbCred == "empty")
+            {
+                cFacebook.Visibility = Visibility.Hidden;
+            }
+            if(twCred == "empty")
+            {
+                cTwitter.Visibility = Visibility.Hidden;
+            }
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DateTime startDate = startDatePicker.SelectedDate.GetValueOrDefault();
@@ -64,33 +80,87 @@ namespace Social_Publisher.View.Tabs
                 long unixTimestamp = dateTimeOffset.ToUnixTimeSeconds();
                 unixTimestamps.Add(unixTimestamp);
             }
-
-            publishPosts(allImages, unixTimestamps);
+            
+            startPublish(allImages, unixTimestamps);
+                       
         }
 
-        private async void publishPosts(List<ImageItem> allPosts, List<long> allUnixTimestamps)
+        private async Task startPublish(List<ImageItem> allImages, List<long> unixTimestamps)
         {
-            string pageID = Properties.Settings.Default.pageID;
-            string access = Properties.Settings.Default.access_token;
-            string endpoint = Properties.Settings.Default.awsURL;
-            lMessage.Visibility = Visibility.Visible;
-            progress.Visibility = Visibility.Visible;
-            
-            for (int i = 0; i < allPosts.Count; i++)
+            bPublish.IsEnabled = false;
+
+            if (cFacebook.IsChecked == true)
             {
-                string content = allPosts[i].content;
+               await publishFBPosts(allImages, unixTimestamps);
+            }
+            if (cTwitter.IsChecked == true)
+            {
+                await publishTWPosts(allImages, unixTimestamps);
+            }
+
+            MessageBox.Show("Your Posts have been Scheduled");
+            planner.Close();
+
+        }
+
+        private async Task publishTWPosts(List<ImageItem> allImages, List<long> unixTimestamps)
+        {
+            progressTW.Visibility = Visibility.Visible;
+            string endpoint = Properties.Settings.Default.awsURL;
+            int cnt = allImages.Count;
+            for (int i = 0; i < cnt; i++)
+            {
+                ImageItem item = allImages[i];
+                string content = item.twContent;
                 if (string.IsNullOrEmpty(content))
                 {
                     content = "";
                 }
-                await postToAWS(allPosts[i].ImageSource, content, allUnixTimestamps[i], access, pageID, endpoint);
-                progress.Content = $"Published {i + 1} out of {allImages.Count} posts";
+                await postToTWAWS(item.ImageSource, content, unixTimestamps[i], endpoint);
+                progressTW.Content = $"Scheduled {i + 1} out of {allImages.Count} twitter posts";
             }
-            MessageBox.Show("Your Posts have been Scheduled");
-            planner.Close();
+        }
+
+        private async Task postToTWAWS(string imageSource, string content, long timestamp, string endpoint)
+        {
+            byte[] imageBytes = File.ReadAllBytes(imageSource);
+            string imageBase64 = Convert.ToBase64String(imageBytes);
+            using (HttpClient client = new HttpClient())
+            {
+
+                MultipartFormDataContent formContent = new MultipartFormDataContent();
+
+                formContent.Add(new StringContent(timestamp.ToString()), "timestamp");
+                formContent.Add(new StringContent(content), "message");
+                formContent.Add(new StringContent(imageBase64), "image");
+
+                HttpResponseMessage response = await client.PostAsync($"{endpoint}/tw_upload", formContent);
+                string responseBody = await response.Content.ReadAsStringAsync();
+                MessageBox.Show(responseBody);
+            }
+        }
+
+        private async Task publishFBPosts(List<ImageItem> allPosts, List<long> allUnixTimestamps)
+        {
+            string pageID = Properties.Settings.Default.pageID;
+            string access = Properties.Settings.Default.access_token;
+            string endpoint = Properties.Settings.Default.awsURL;
+            progressFB.Visibility = Visibility.Visible;
+            
+            for (int i = 0; i < allPosts.Count; i++)
+            {
+                string content = allPosts[i].fbContent;
+                if (string.IsNullOrEmpty(content))
+                {
+                    content = "";
+                }
+                await postToFBAWS(allPosts[i].ImageSource, content, allUnixTimestamps[i], access, pageID, endpoint);
+                progressFB.Content = $"Scheduled {i + 1} out of {allImages.Count} facebook posts";
+            }
+            
             
         }
-        private async Task postToAWS(string path, string message, long timestamp, string accessToken, string pageId, string apiUrl)
+        private async Task postToFBAWS(string path, string message, long timestamp, string accessToken, string pageId, string apiUrl)
         {   
             byte[] imageBytes = File.ReadAllBytes(path);
             string imageBase64 = Convert.ToBase64String(imageBytes);

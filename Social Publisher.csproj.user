@@ -16,6 +16,9 @@
     <Compile Update="PlannerWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="SplashWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\PublishPost.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PlannerWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SplashWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\PublishPost.xaml">

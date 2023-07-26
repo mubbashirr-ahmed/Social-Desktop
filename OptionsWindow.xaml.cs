@@ -41,24 +41,24 @@ namespace Social_Publisher
             string pageID = Properties.Settings.Default.pageID;
             string access = Properties.Settings.Default.access_token;
             string endpoints = Properties.Settings.Default.awsURL;
+            string twCred = Properties.Settings.Default.tCred;
 
-            if (access == "empty" || pageID == "empty")
-            {
-                MessageBox.Show("First go to settings and add credentials!");
-                return false;
-            }
             if (endpoints == "empty")
             {
                 MessageBox.Show("First go to settings and verify AWS credentials!");
                 return false;
             }
+            if (access == "empty" && twCred == "empty")
+            {
+                MessageBox.Show("First go to settings and add credentials of at least 1 platform!");
+                return false;
+            }
             return true;
-           
         }
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            SettingsWindow settingsWindow = new SettingsWindow();
+            SettingsWindow settingsWindow = new SettingsWindow(this);
             settingsWindow.Show();
 
         }

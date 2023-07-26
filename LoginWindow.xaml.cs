@@ -59,6 +59,8 @@ namespace Social_Publisher
 
                         if (apiResponse.purchase.email == email.Trim())
                         {
+                            Properties.Settings.Default.loggedin = "ok";
+                            Properties.Settings.Default.Save();
                             OptionsWindow mainWindow = new OptionsWindow();
                             this.Close();
                             mainWindow.Show();

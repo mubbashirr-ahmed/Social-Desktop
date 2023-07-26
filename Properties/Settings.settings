@@ -11,8 +11,26 @@
     <Setting Name="awsURL" Type="System.String" Scope="User">
       <Value Profile="(Default)">empty</Value>
     </Setting>
-    <Setting Name="loggedin" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="loggedin" Type="System.String" Scope="User">
+      <Value Profile="(Default)">empty</Value>
+    </Setting>
+    <Setting Name="tCred" Type="System.String" Scope="User">
+      <Value Profile="(Default)">empty</Value>
+    </Setting>
+    <Setting Name="tApi" Type="System.String" Scope="User">
+      <Value Profile="(Default)">empty</Value>
+    </Setting>
+    <Setting Name="tAS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">empty</Value>
+    </Setting>
+    <Setting Name="tCK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">empty</Value>
+    </Setting>
+    <Setting Name="tCKS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">empty</Value>
+    </Setting>
+    <Setting Name="tUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">empty</Value>
     </Setting>
   </Settings>
 </SettingsFile>

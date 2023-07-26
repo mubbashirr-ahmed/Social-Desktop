@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Social_Publisher.View"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="SettingsWindow" Height="550" Width="800">
+        Title="SettingsWindow" Height="600" Width="850">
     <Grid>
         <Label Content="Social API Credentials" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
 
@@ -18,11 +18,11 @@
                 <Label Content="Access Token" FontSize="12" HorizontalAlignment="Left" Margin="10,10,0,0"/>
                 <TextBox x:Name="access_token" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Width="210" Height="25"/>
                 <Button x:Name="fbSave" Content="Verify and Save" HorizontalAlignment="Left" Margin="20,10,0,0" Height="32" Width="117" Click="fbSave_Click"/>
-               
+
             </StackPanel>
         </Border>
 
-        <Border BorderBrush="Black" BorderThickness="1" Margin="30,40,0,0" Height="200" Width="280" HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Border BorderBrush="Black" BorderThickness="1" Margin="275,40,0,0" Height="200" Width="280" HorizontalAlignment="Left" VerticalAlignment="Top">
             <StackPanel Orientation="Vertical" Margin="1,0,1,0">
                 <Label Content="AWS Credentials" FontWeight="Bold" FontSize="13" HorizontalAlignment="Left" Margin="10,10,0,0" Height="30" VerticalAlignment="Top"/>
                 <Label Content="AWS Access URL (Example: http://13.232.7.148/)" FontSize="12" HorizontalAlignment="Left" Margin="10,10,0,0" Height="30" VerticalAlignment="Top"/>
@@ -33,7 +33,22 @@
         </Border>
         <Button x:Name="bLogout" Content="Reset and Logout" Margin="0,0,28,26" HorizontalAlignment="Right" Width="136" Click="bLogout_Click" Height="36" VerticalAlignment="Bottom"/>
 
-
+        <Border BorderBrush="Black" BorderThickness="1" Margin="565, 40, 0, 0" HorizontalAlignment="Left" Width="260" Height="450" VerticalAlignment="Top" >
+            <StackPanel Orientation="Vertical">
+                <Label Content="Twitter Credentials" FontWeight="Bold" FontSize="13" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+                <Label Content="API key" FontSize="12" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+                <TextBox Name="tapiKey" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="10,10,0,0" Width="210" Height="25"/>
+                <Label Content="API Key Secret" FontSize="12" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+                <TextBox x:Name="tapiKeySecret" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Width="210" Height="25"/>
+                <Label Content="Access Token" FontSize="12" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+                <TextBox x:Name="taccessTokenTwitter" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Width="210" Height="25"/>
+                <Label Content="Access Token Secret" FontSize="12" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+                <TextBox x:Name="taccessTokenSecretTwitter" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Width="210" Height="25"/>
+                <Label Content="User Name" FontSize="12" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+                <TextBox x:Name="tuserName" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Width="210" Height="25"/>
+                <Button Content="Verify and Save" HorizontalAlignment="Left" Margin="10,10,0,0" Height="32" Width="117" x:Name="bTWSave" Click="bTWSave_Click"/>
+            </StackPanel>
+        </Border>
 
     </Grid>
 </Window>

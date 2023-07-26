@@ -54,15 +54,7 @@ namespace Social_Publisher.View.Tabs
                 return null;
             }
 
-            string pageID = Properties.Settings.Default.pageID;
-            string access = Properties.Settings.Default.access_token;
-
-            if (access == "empty" || pageID == "empty")
-            {
-                MessageBox.Show("You must verify your page before punlishing content in Settings window!");
-                return null;
-            }
-
+          
             return allImages;
         }
         public void removeData()

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
+using Social_Publisher.Properties;
 
 namespace Social_Publisher
 {
@@ -13,5 +10,6 @@ namespace Social_Publisher
     /// </summary>
     public partial class App : Application
     {
+        
     }
 }

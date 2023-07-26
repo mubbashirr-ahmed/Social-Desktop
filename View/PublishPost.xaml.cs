@@ -126,7 +126,7 @@ namespace Social_Publisher
                         MultipartFormDataContent multipartContent = new MultipartFormDataContent();
                         multipartContent.Add(imageContent, "source", Path.GetFileName(path));
                         multipartContent.Add(new StringContent("false"), "published");
-                        multipartContent.Add(new StringContent(imageItem.content), "message");
+                        multipartContent.Add(new StringContent(imageItem.fbContent), "message");
                         multipartContent.Add(new StringContent("1687270332"), "scheduled_publish_time");
                         multipartContent.Add(new StringContent(pageAccessToken), "access_token");
                        
