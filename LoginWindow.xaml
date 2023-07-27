@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Social_Publisher"
         mc:Ignorable="d"
         ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         Title="LoginWindow" Height="450" Width="800">
     <Grid>
         <Image x:Name="img" Width="95" Height="100" Margin="350,76,350,0" Source="Assets/sdlogo.png" Stretch="Fill" VerticalAlignment="Top"/>
