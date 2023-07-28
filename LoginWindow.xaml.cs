@@ -25,7 +25,7 @@ namespace Social_Publisher
     {
         public LoginWindow()
         {
-            InitializeComponent();
+            InitializeComponent();          
         }
         private async void bLogin_Click(object sender, RoutedEventArgs e)
         {
